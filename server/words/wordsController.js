@@ -2,58 +2,124 @@ var Promise = require('bluebird');
 var _ = require('underscore');
 
 var Utils = require('../utils/utils');
-var WordDict = require('../dictionaries/word-dict.js');
+var WordDict = require('../dictionaries/word-dict1.js');
 
 
 module.exports = {
 
-  // need error handling
-  getWordsList: function(req, res) {
+  getWordList: function(req, res) {
+    var verbose = req.query.verbose === 'true';
+    var minRank = parseInt(req.query.minrank) || 1;
+    var maxRank = parseInt(req.query.maxrank) || WordDict.length;
+
+    minRank = minRank < 1 ? 1 : minRank;
+    minRank = minRank > WordDict.length ? WordDict.length : minRank;
+    maxRank = maxRank < 1 ? 1: maxRank;
+    maxRank = maxRank < minRank ? minRank : maxRank;
+
+    var resList = [];
+    for (var i = minRank; i <= maxRank; i++) {
+      if(verbose) {
+        resList.push({ word: WordDict.words[i], rank: i });
+      } else {
+        resList.push(WordDict.words[i]);
+      }
+    }
+
+    console.log('res: ' + resList);
+    res.json(resList);
+  },
+
+  // construct random word list given query parameters
+  getRandomWordList: function(req, res) {
 
     // set parameters to default values if not provided
     var size = parseInt(req.query.size) || 100;
-    var startRank = parseInt(req.query.startrank) || 1;
-    var endRank = parseInt(req.query.endrank) || WordDict.length;
+    var verbose = req.query.verbose === 'true';
+    var minRank = parseInt(req.query.minrank) || 1;
+    var maxRank = parseInt(req.query.maxrank) || WordDict.length;
 
-    // log information
-    console.log('GET request recieved for getWordsList =========================>');
-    console.log('size request: ' + size);
-    console.log('rankstart request: ' + startRank);
-    console.log('rankend request: ' + endRank);
-
-    // send error if any of the parameters are not numbers
-    // this may not be needed...
-    if(typeof size !== 'number' || typeof startRank !== 'number' || typeof endRank !== 'number') {
-      res.sendStatus(500);
-      return;
-    }
-
-    // confine the size, startRank, and endRank to always work with bad inputs
+    // confine the size, minRank, and maxRank to always work with bad inputs
     size = size > 10000 ? 10000 : size;
-    startRank = startRank < 1 ? 1 : startRank;
-    startRank = startRank > WordDict.length ? WordDict.length : startRank;
-    endRank = endRank < 1 ? 1: endRank;
-    endRank = endRank < startRank ? startRank : endRank;
+    minRank = minRank < 1 ? 1 : minRank;
+    minRank = minRank > WordDict.length ? WordDict.length : minRank;
+    maxRank = maxRank < 1 ? 1: maxRank;
+    maxRank = maxRank < minRank ? minRank : maxRank;
 
-
+    // build the response list and return
     var resList = [];
-
-    while(resList.length < size) {
-      resList.push(WordDict.words[Utils.randomInt(startRank, endRank)]);
+    var currItem = null;
+    var currRand = null;
+    var currWord = null;
+    if(verbose) {
+      while(resList.length < size) {
+        currRand = Utils.randomInt(minRank, maxRank);
+        currWord = WordDict.words[currRand];
+        currItem = {
+          word: currWord,
+          rank: WordDict.ranks[currWord]
+        };
+        resList.push(currItem);
+      }
+    } else {
+      while(resList.length < size) {
+        resList.push(WordDict.words[Utils.randomInt(minRank, maxRank)]);
+      }
     }
 
-    res.send(resList);
+    console.log('res: ' + resList);
+    res.json(resList);
   },
 
+  // get the rank of a given word
+  getRankByWord: function(req, res) {
+    var word = req.query.word || null;
+    var verbose = req.query.verbose === 'true';
+    if(!word) {
+      res.status(500).send('ERROR: the "word" field was not provided');
+      return;
+    }
+    var rank = WordDict.ranks[word];
+    var result = null;
+    if(rank === undefined) {
+      res.json(null);
+    } else if(verbose) {
+      result = { word: word, rank: rank };
+    } else {
+      result = rank;
+    }
+    console.log('res: ' + result);
+    res.json(result);
+  },
+
+  getWordByRank: function(req, res) {
+    rank = parseInt(req.query.rank) || null;
+    var verbose = req.query.verbose === 'true';
+    if(!rank) {
+      res.status(500).send('ERROR: the "rank" field was not provided');
+    }
+    var word = WordDict.words[rank];
+    var result = null;
+    if(word === undefined) {
+      res.json(null);
+    } else if(verbose) {
+      result = { word: word, rank: rank };
+    } else {
+      result = word;
+    }
+    console.log('res: ' + result);
+    res.json(result);
+  },
+
+  // get the entire dictionary of words
   getAllWords: function(req, res) {
     res.send(WordDict.words);
   },
 
+  // get the entire dictionary of ranks
   getAllRanks: function(req, res) {
     res.send(WordDict.ranks);
   }
-
-
 
 };
 
