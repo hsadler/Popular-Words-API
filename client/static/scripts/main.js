@@ -60,6 +60,9 @@ $(document).ready(function() {
       url: url,
       type: 'GET',
       dataType: 'json',
+      beforeSend: function() {
+        $output.html('loading...');
+      },
       success: function(data) {
         $output.html(syntaxHighlight(JSON.stringify(data, null, 4)));
       },
@@ -82,12 +85,75 @@ $(document).ready(function() {
     reqRandomWordList(url);
   });
 
+
+  // get rank of word request and display
+  var reqRankByWord = function(url) {
+    var $output = $('#word-rank-response-output');
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function() {
+        $output.html('loading...');
+      },
+      success: function(data) {
+        $output.html(syntaxHighlight(JSON.stringify(data, null, 4)));
+      },
+      error: function(xhr, status, errorThrown) {
+        throw new Error('Error information: ' + xhr + ' ' + status + ' ' + errorThrown);
+      }
+    });
+  };
+  // init the client with a request
+  reqRankByWord('http://localhost:8080/api/words/getrank?word=happy');
+  // assign listener to submit
+  $('#word-rank-submit-button').on('click', function() {
+    var $this = $(this);
+    var wordName = $this.siblings('.word-name').val();
+    var verbose = $this.siblings('.verbose-radio').find('.verbose-true').is(":checked");
+    var url = 'api/words/getrank?word=' + wordName + '' + (verbose === true ? '&verbose=true' : '');
+    $('#word-rank-get-string').val('http://localhost:8080/' + url);
+    reqRankByWord(url);
+  });
+
+
+  // get word by rank request and display
+  var reqWordByRank = function(url) {
+    var $output = $('#search-rank-response-output');
+    $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function() {
+        $output.html('loading...');
+      },
+      success: function(data) {
+        $output.html(syntaxHighlight(JSON.stringify(data, null, 4)));
+      },
+      error: function(xhr, status, errorThrown) {
+        throw new Error('Error information: ' + xhr + ' ' + status + ' ' + errorThrown);
+      }
+    });
+  };
+  // init the client with a request
+  reqWordByRank('http://localhost:8080/api/words/searchrank?rank=100');
+  // assign listener to submit
+  $('#search-rank-submit-button').on('click', function() {
+    var $this = $(this);
+    var wordRank = $this.siblings('.word-rank').val();
+    var verbose = $this.siblings('.verbose-radio').find('.verbose-true').is(":checked");
+    var url = 'api/words/searchrank?rank=' + wordRank + '' + (verbose === true ? '&verbose=true' : '');
+    $('#search-rank-get-string').val('http://localhost:8080/' + url);
+    reqWordByRank(url);
+  });
+
+
   // start api-body panels closed
-  // $('.api-body').hide();
+  $('.api-body').hide();
 
   // toggle show/hide and active class on .api-header click
   $('.api-header').on('click', function() {
-    $(this).toggleClass('api-header-active').next().slideToggle('fast');
+    $(this).toggleClass('api-header-active').next().slideToggle(500);
   });
 
 

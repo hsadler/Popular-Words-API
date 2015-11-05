@@ -2,7 +2,7 @@ var Promise = require('bluebird');
 var _ = require('underscore');
 
 var Utils = require('../utils/utils');
-var WordDict = require('../dictionaries/word-dict1.js');
+var WordDict = require('../dictionaries/word-dict2.js');
 
 
 module.exports = {

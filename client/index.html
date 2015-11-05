@@ -48,37 +48,41 @@
 
                 <div class="api-body">
 
-                  <div class="api-form col-md-3 col-sm-12">
-                    <h3>API Usage</h3>
-                    <br>
-                    <h5><strong>Minimum Rank</strong></h5>
-                    <input class="form-control minrank" value="1"/>
-                    <br>
-                    <h5><strong>Maximum Rank</strong></h5>
-                    <input class="form-control maxrank" value="5"/>
-                    <br>
-                    <h5><strong>Response Verbose</strong></h5>
-                    <div class="verbose-radio radio">
-                      <label class="radio-inline">
-                        <input class="verbose-true" type="radio" name="word-list-radio"> true
-                      </label>
-                      <label class="radio-inline">
-                        <input type="radio" name="word-list-radio" checked> false
-                      </label>
-                    </div>
-                    <br>
-                    <button class="btn btn-primary" id="word-list-submit-button">submit</button>
-                  </div>
+                  <div class="row">
 
-                  <div class="col-md-9 col-sm-12">
-                    <h3>JSON Response</h3>
-                    <br>
-                    <h5><strong>Request URL</strong></h5>
-                    <div class="input-group">
-                      <div class="input-group-addon"><strong>GET</strong></div>
-                      <input type="text" class="form-control" id="word-list-get-string" placeholder="http://localhost:8080/api/words/list?minrank=1&maxrank=5" readonly="readonly">
+                    <div class="api-form col-md-3 col-sm-12">
+                      <h3>API Usage</h3>
+                      <br>
+                      <h5><strong>Minimum Rank</strong></h5>
+                      <input class="form-control minrank" value="1"/>
+                      <br>
+                      <h5><strong>Maximum Rank</strong></h5>
+                      <input class="form-control maxrank" value="5"/>
+                      <br>
+                      <h5><strong>Response Verbose</strong></h5>
+                      <div class="verbose-radio radio">
+                        <label class="radio-inline">
+                          <input class="verbose-true" type="radio" name="word-list-radio"> true
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="word-list-radio" checked> false
+                        </label>
+                      </div>
+                      <br>
+                      <button class="btn btn-primary" id="word-list-submit-button">submit</button>
                     </div>
-                    <pre class="api-response-output" id="word-list-response-output">loading...</pre>
+
+                    <div class="col-md-9 col-sm-12">
+                      <h3>JSON Response</h3>
+                      <br>
+                      <h5><strong>Request URL</strong></h5>
+                      <div class="input-group">
+                        <div class="input-group-addon"><strong>GET</strong></div>
+                        <input type="text" class="form-control" id="word-list-get-string" placeholder="http://localhost:8080/api/words/list?minrank=1&maxrank=5" readonly="readonly">
+                      </div>
+                      <pre class="api-response-output-lg" id="word-list-response-output">loading...</pre>
+                    </div>
+
                   </div>
 
                 </div>
@@ -94,40 +98,44 @@
 
                 <div class="api-body">
 
-                  <div class="api-form col-md-3 col-sm-12">
-                    <h3>API Usage</h3>
-                    <br>
-                    <h5><strong>Size</strong></h5>
-                    <input class="form-control collection-size" value="5"/>
-                    <br>
-                    <h5><strong>Minimum Rank</strong></h5>
-                    <input class="form-control minrank" value="1"/>
-                    <br>
-                    <h5><strong>Maximum Rank</strong></h5>
-                    <input class="form-control maxrank" value="100"/>
-                    <br>
-                    <h5><strong>Response Verbose</strong></h5>
-                    <div class="verbose-radio radio">
-                      <label class="radio-inline">
-                        <input class="verbose-true" type="radio" name="random-list-radio"> true
-                      </label>
-                      <label class="radio-inline">
-                        <input type="radio" name="random-list-radio" checked> false
-                      </label>
-                    </div>
-                    <br>
-                    <button class="btn btn-primary" id="random-list-submit-button">submit</button>
-                  </div>
+                  <div class="row">
 
-                  <div class="col-md-9 col-sm-12">
-                    <h3>JSON Response</h3>
-                    <br>
-                    <h5><strong>Request URL</strong></h5>
-                    <div class="input-group">
-                      <div class="input-group-addon"><strong>GET</strong></div>
-                      <input type="text" class="form-control" id="random-list-get-string" placeholder="http://localhost:8080/api/words/randomlist?size=10&minrank=1&maxrank=5" readonly="readonly">
+                    <div class="api-form col-md-3 col-sm-12">
+                      <h3>API Usage</h3>
+                      <br>
+                      <h5><strong>Size</strong></h5>
+                      <input class="form-control collection-size" value="5"/>
+                      <br>
+                      <h5><strong>Minimum Rank</strong></h5>
+                      <input class="form-control minrank" value="1"/>
+                      <br>
+                      <h5><strong>Maximum Rank</strong></h5>
+                      <input class="form-control maxrank" value="100"/>
+                      <br>
+                      <h5><strong>Response Verbose</strong></h5>
+                      <div class="verbose-radio radio">
+                        <label class="radio-inline">
+                          <input class="verbose-true" type="radio" name="random-list-radio"> true
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="random-list-radio" checked> false
+                        </label>
+                      </div>
+                      <br>
+                      <button class="btn btn-primary" id="random-list-submit-button">submit</button>
                     </div>
-                    <pre class="api-response-output" id="random-list-response-output">loading...</pre>
+
+                    <div class="col-md-9 col-sm-12">
+                      <h3>JSON Response</h3>
+                      <br>
+                      <h5><strong>Request URL</strong></h5>
+                      <div class="input-group">
+                        <div class="input-group-addon"><strong>GET</strong></div>
+                        <input type="text" class="form-control" id="random-list-get-string" placeholder="http://localhost:8080/api/words/randomlist?size=10&minrank=1&maxrank=5" readonly="readonly">
+                      </div>
+                      <pre class="api-response-output-lg" id="random-list-response-output">loading...</pre>
+                    </div>
+
                   </div>
 
                 </div>
@@ -135,18 +143,96 @@
               </td>
             </tr>
 
+            <!-- Get Rank API -->
             <tr>
               <td>
 
                 <p class="api-header text-muted pointer"><strong>Get Rank</strong></p>
 
+                <div class="api-body">
+
+                  <div class="row">
+
+                    <div class="api-form col-md-3 col-sm-12">
+                      <h3>API Usage</h3>
+                      <br>
+                      <h5><strong>Enter a Word</strong></h5>
+                      <input class="form-control word-name" value="happy"/>
+                      <br>
+                      <h5><strong>Response Verbose</strong></h5>
+                      <div class="verbose-radio radio">
+                        <label class="radio-inline">
+                          <input class="verbose-true" type="radio" name="word-rank-radio"> true
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="word-rank-radio" checked> false
+                        </label>
+                      </div>
+                      <br>
+                      <button class="btn btn-primary" id="word-rank-submit-button">submit</button>
+                    </div>
+
+                    <div class="col-md-9 col-sm-12">
+                      <h3>JSON Response</h3>
+                      <br>
+                      <h5><strong>Request URL</strong></h5>
+                      <div class="input-group">
+                        <div class="input-group-addon"><strong>GET</strong></div>
+                        <input type="text" class="form-control" id="word-rank-get-string" placeholder="http://localhost:8080/api/words/getrank?word=happy" readonly="readonly">
+                      </div>
+                      <pre class="api-response-output-sm" id="word-rank-response-output">loading...</pre>
+                    </div>
+
+                  </div>
+
+                </div>
+
               </td>
             </tr>
 
+            <!-- Search by Rank API -->
             <tr>
               <td>
 
                 <p class="api-header text-muted pointer"><strong>Search by Rank</strong></p>
+
+                <div class="api-body">
+
+                  <div class="row">
+
+                    <div class="api-form col-md-3 col-sm-12">
+                      <h3>API Usage</h3>
+                      <br>
+                      <h5><strong>Enter a Rank</strong></h5>
+                      <input class="form-control word-rank" value="100"/>
+                      <br>
+                      <h5><strong>Response Verbose</strong></h5>
+                      <div class="verbose-radio radio">
+                        <label class="radio-inline">
+                          <input class="verbose-true" type="radio" name="search-rank-radio"> true
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="search-rank-radio" checked> false
+                        </label>
+                      </div>
+                      <br>
+                      <button class="btn btn-primary" id="search-rank-submit-button">submit</button>
+                    </div>
+
+                    <div class="col-md-9 col-sm-12">
+                      <h3>JSON Response</h3>
+                      <br>
+                      <h5><strong>Request URL</strong></h5>
+                      <div class="input-group">
+                        <div class="input-group-addon"><strong>GET</strong></div>
+                        <input type="text" class="form-control" id="search-rank-get-string" placeholder="http://localhost:8080/api/words/searchrank?rank=100" readonly="readonly">
+                      </div>
+                      <pre class="api-response-output-sm" id="search-rank-response-output">loading...</pre>
+                    </div>
+
+                  </div>
+
+                </div>
 
               </td>
             </tr>
