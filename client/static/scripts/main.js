@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  // save the current web domain
+  var _root = location.protocol + '//' + location.host;
+
   // the JSON prettifyer
   function syntaxHighlight(json) {
     json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -21,6 +24,8 @@ $(document).ready(function() {
   }
 
 
+  ////// API logic //////
+
   // word list request and display
   var reqWordList = function(url) {
     var $output = $('#word-list-response-output');
@@ -39,16 +44,14 @@ $(document).ready(function() {
       }
     });
   };
-  // init the client with a request
-  reqWordList('http://localhost:8080/api/words/list?minrank=1&maxrank=5');
   // assign listener to submit
   $('#word-list-submit-button').on('click', function() {
     var $this = $(this);
     var minRank = $this.siblings('.minrank').val();
     var maxRank = $this.siblings('.maxrank').val();
     var verbose = $this.siblings('.verbose-radio').find('.verbose-true').is(":checked");
-    var url = 'api/words/list?minrank=' + minRank + '&maxrank=' + maxRank + '' + (verbose === true ? '&verbose=true' : '');
-    $('#word-list-get-string').val('http://localhost:8080/' + url);
+    var url = '/api/words/list?minrank=' + minRank + '&maxrank=' + maxRank + '' + (verbose === true ? '&verbose=true' : '');
+    $('#word-list-get-string').val(_root + url);
     reqWordList(url);
   });
 
@@ -71,8 +74,6 @@ $(document).ready(function() {
       }
     });
   };
-  // init the client with a request
-  reqRandomWordList('http://localhost:8080/api/words/randomlist?size=5&minrank=1&maxrank=100');
   // assign listener to submit
   $('#random-list-submit-button').on('click', function() {
     var $this = $(this);
@@ -80,8 +81,8 @@ $(document).ready(function() {
     var minRank = $this.siblings('.minrank').val();
     var maxRank = $this.siblings('.maxrank').val();
     var verbose = $this.siblings('.verbose-radio').find('.verbose-true').is(":checked");
-    var url = 'api/words/randomlist?size=' + listSize + '&minrank=' + minRank + '&maxrank=' + maxRank + '' + (verbose === true ? '&verbose=true' : '');
-    $('#random-list-get-string').val('http://localhost:8080/' + url);
+    var url = '/api/words/randomlist?size=' + listSize + '&minrank=' + minRank + '&maxrank=' + maxRank + '' + (verbose === true ? '&verbose=true' : '');
+    $('#random-list-get-string').val(_root + url);
     reqRandomWordList(url);
   });
 
@@ -104,15 +105,13 @@ $(document).ready(function() {
       }
     });
   };
-  // init the client with a request
-  reqRankByWord('http://localhost:8080/api/words/getrank?word=happy');
   // assign listener to submit
   $('#word-rank-submit-button').on('click', function() {
     var $this = $(this);
     var wordName = $this.siblings('.word-name').val();
     var verbose = $this.siblings('.verbose-radio').find('.verbose-true').is(":checked");
-    var url = 'api/words/getrank?word=' + wordName + '' + (verbose === true ? '&verbose=true' : '');
-    $('#word-rank-get-string').val('http://localhost:8080/' + url);
+    var url = '/api/words/getrank?word=' + wordName + '' + (verbose === true ? '&verbose=true' : '');
+    $('#word-rank-get-string').val(_root + url);
     reqRankByWord(url);
   });
 
@@ -135,27 +134,42 @@ $(document).ready(function() {
       }
     });
   };
-  // init the client with a request
-  reqWordByRank('http://localhost:8080/api/words/searchrank?rank=100');
   // assign listener to submit
   $('#search-rank-submit-button').on('click', function() {
     var $this = $(this);
     var wordRank = $this.siblings('.word-rank').val();
     var verbose = $this.siblings('.verbose-radio').find('.verbose-true').is(":checked");
-    var url = 'api/words/searchrank?rank=' + wordRank + '' + (verbose === true ? '&verbose=true' : '');
-    $('#search-rank-get-string').val('http://localhost:8080/' + url);
+    var url = '/api/words/searchrank?rank=' + wordRank + '' + (verbose === true ? '&verbose=true' : '');
+    $('#search-rank-get-string').val(_root + url);
     reqWordByRank(url);
   });
 
 
+  ////// Init the client //////
+
   // start api-body panels closed
   $('.api-body').hide();
 
-  // toggle show/hide and active class on .api-header click
+  // init the client with example requests
+  var wordListExUrl = _root + '/api/words/list?minrank=1&maxrank=5';
+  reqWordList(wordListExUrl);
+  $('#word-list-get-string').val(wordListExUrl);
+
+  var randomListExUrl = _root + '/api/words/randomlist?size=5&minrank=1&maxrank=100';
+  reqRandomWordList(randomListExUrl);
+  $('#random-list-get-string').val(randomListExUrl);
+
+  var getRankExUrl = _root + '/api/words/getrank?word=happy';
+  reqRankByWord(getRankExUrl);
+  $('#word-rank-get-string').val(getRankExUrl);
+
+  var searchRankExUrl = _root + '/api/words/searchrank?rank=100';
+  reqWordByRank(searchRankExUrl);
+  $('#search-rank-get-string').val(searchRankExUrl);
+
+  // add listeners to toggle show/hide and active class on .api-header click
   $('.api-header').on('click', function() {
     $(this).toggleClass('api-header-active').next().slideToggle(500);
   });
-
-
 
 });

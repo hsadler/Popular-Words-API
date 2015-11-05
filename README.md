@@ -1,10 +1,10 @@
 # Popular Words API
 
-> A free API for the most frequently used English words. Great for getting random collections. And more..
+A free API for the most frequently used English words. Great for getting random collections. And more..
 
 ## Deployed Link
 
-http://stackmatch-dev.herokuapp.com
+https://popular-words-api.herokuapp.com
 
 ## Requirements
 
