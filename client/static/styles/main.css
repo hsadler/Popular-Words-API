@@ -7,7 +7,7 @@
 
 /*app styles*/
 .app-container {
-  margin-bottom: 250px;
+  /*margin-bottom: 250px;*/
 }
 .header-container {
   margin: 60px 0 40px 0;
@@ -41,6 +41,16 @@
   height: 160px;
 }
 
+/*footer styles*/
+.footer-container {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+  height: 40px;
+}
+.footer-text {
+  margin-top: 10px;
+}
+
 /*utility styles*/
 .pointer {
   cursor: pointer;
@@ -53,4 +63,3 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 .boolean { color: blue; }
 .null { color: #008; }
 .key { color: #008; }
-

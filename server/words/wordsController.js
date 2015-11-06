@@ -25,8 +25,6 @@ module.exports = {
         resList.push(WordDict.words[i]);
       }
     }
-
-    console.log('res: ' + resList);
     res.json(resList);
   },
 
@@ -66,8 +64,6 @@ module.exports = {
         resList.push(WordDict.words[Utils.randomInt(minRank, maxRank)]);
       }
     }
-
-    console.log('res: ' + resList);
     res.json(resList);
   },
 
@@ -88,7 +84,6 @@ module.exports = {
     } else {
       result = rank;
     }
-    console.log('res: ' + result);
     res.json(result);
   },
 
@@ -107,7 +102,6 @@ module.exports = {
     } else {
       result = word;
     }
-    console.log('res: ' + result);
     res.json(result);
   },
 
