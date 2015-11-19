@@ -2,7 +2,7 @@ var Promise = require('bluebird');
 var _ = require('underscore');
 
 var Utils = require('../utils/utils');
-var WordDict = require('../dictionaries/word-dict2.js');
+var Words = require('./wordsModel.js');
 
 
 module.exports = {
@@ -10,19 +10,19 @@ module.exports = {
   getWordList: function(req, res) {
     var verbose = req.query.verbose === 'true';
     var minRank = parseInt(req.query.minrank) || 1;
-    var maxRank = parseInt(req.query.maxrank) || WordDict.length;
+    var maxRank = parseInt(req.query.maxrank) || Words.length;
 
     minRank = minRank < 1 ? 1 : minRank;
-    minRank = minRank > WordDict.length ? WordDict.length : minRank;
+    minRank = minRank > Words.length ? Words.length : minRank;
     maxRank = maxRank < 1 ? 1: maxRank;
     maxRank = maxRank < minRank ? minRank : maxRank;
 
     var resList = [];
     for (var i = minRank; i <= maxRank; i++) {
       if(verbose) {
-        resList.push({ word: WordDict.words[i], rank: i });
+        resList.push({ word: Words.words[i], rank: i });
       } else {
-        resList.push(WordDict.words[i]);
+        resList.push(Words.words[i]);
       }
     }
     res.json(resList);
@@ -35,12 +35,12 @@ module.exports = {
     var size = parseInt(req.query.size) || 100;
     var verbose = req.query.verbose === 'true';
     var minRank = parseInt(req.query.minrank) || 1;
-    var maxRank = parseInt(req.query.maxrank) || WordDict.length;
+    var maxRank = parseInt(req.query.maxrank) || Words.length;
 
     // confine the size, minRank, and maxRank to always work with bad inputs
     size = size > 10000 ? 10000 : size;
     minRank = minRank < 1 ? 1 : minRank;
-    minRank = minRank > WordDict.length ? WordDict.length : minRank;
+    minRank = minRank > Words.length ? Words.length : minRank;
     maxRank = maxRank < 1 ? 1: maxRank;
     maxRank = maxRank < minRank ? minRank : maxRank;
 
@@ -52,16 +52,16 @@ module.exports = {
     if(verbose) {
       while(resList.length < size) {
         currRand = Utils.randomInt(minRank, maxRank);
-        currWord = WordDict.words[currRand];
+        currWord = Words.words[currRand];
         currItem = {
           word: currWord,
-          rank: WordDict.ranks[currWord]
+          rank: Words.ranks[currWord]
         };
         resList.push(currItem);
       }
     } else {
       while(resList.length < size) {
-        resList.push(WordDict.words[Utils.randomInt(minRank, maxRank)]);
+        resList.push(Words.words[Utils.randomInt(minRank, maxRank)]);
       }
     }
     res.json(resList);
@@ -75,7 +75,7 @@ module.exports = {
       res.status(500).send('ERROR: the "word" field was not provided');
       return;
     }
-    var rank = WordDict.ranks[word];
+    var rank = Words.ranks[word];
     var result = null;
     if(rank === undefined) {
       res.json(null);
@@ -93,7 +93,7 @@ module.exports = {
     if(!rank) {
       res.status(500).send('ERROR: the "rank" field was not provided');
     }
-    var word = WordDict.words[rank];
+    var word = Words.words[rank];
     var result = null;
     if(word === undefined) {
       res.json(null);
@@ -107,12 +107,12 @@ module.exports = {
 
   // get the entire dictionary of words
   getAllWords: function(req, res) {
-    res.send(WordDict.words);
+    res.send(Words.words);
   },
 
   // get the entire dictionary of ranks
   getAllRanks: function(req, res) {
-    res.send(WordDict.ranks);
+    res.send(Words.ranks);
   }
 
 };
