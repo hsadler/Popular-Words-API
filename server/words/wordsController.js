@@ -1,6 +1,3 @@
-var Promise = require('bluebird');
-var _ = require('underscore');
-
 var Utils = require('../utils/utils');
 var Words = require('./wordsModel.js');
 
@@ -14,7 +11,7 @@ module.exports = {
 
     minRank = minRank < 1 ? 1 : minRank;
     minRank = minRank > Words.length ? Words.length : minRank;
-    maxRank = maxRank < 1 ? 1: maxRank;
+    maxRank = maxRank < 1 ? 1 : maxRank;
     maxRank = maxRank < minRank ? minRank : maxRank;
 
     var resList = [];
@@ -41,7 +38,7 @@ module.exports = {
     size = size > 10000 ? 10000 : size;
     minRank = minRank < 1 ? 1 : minRank;
     minRank = minRank > Words.length ? Words.length : minRank;
-    maxRank = maxRank < 1 ? 1: maxRank;
+    maxRank = maxRank < 1 ? 1 : maxRank;
     maxRank = maxRank < minRank ? minRank : maxRank;
 
     // build the response list and return
