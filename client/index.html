@@ -28,12 +28,15 @@
   <body>
 
     <div class="row">
-      <div class="app-container col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+      <div
+        class="app-container col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1
+        col-xs-10 col-xs-offset-1"
+      >
 
         <!-- header -->
         <div class="header-container">
           <h1 class="app-header-title">Popular Words API</h1>
-          <p>A free API for the most frequently used English words. Great for getting random collections. And more..</p>
+          <p>A free API for the most frequently used English words.</p>
         </div>
 
         <!-- api sections -->
@@ -44,7 +47,9 @@
             <tr>
               <td>
 
-                <p class="api-header text-muted pointer"><strong>Word List</strong></p>
+                <p class="api-header text-muted pointer">
+                  <strong>Word List</strong>
+                </p>
 
                 <div class="api-body">
 
@@ -62,14 +67,25 @@
                       <h5><strong>Response Verbose</strong></h5>
                       <div class="verbose-radio radio">
                         <label class="radio-inline">
-                          <input class="verbose-true" type="radio" name="word-list-radio"> true
+                          <input
+                            class="verbose-true"
+                            type="radio"
+                            name="word-list-radio"
+                          > true
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="word-list-radio" checked> false
+                          <input
+                            type="radio"
+                            name="word-list-radio"
+                            checked
+                          > false
                         </label>
                       </div>
                       <br>
-                      <button class="btn btn-primary" id="word-list-submit-button">submit</button>
+                      <button
+                        class="btn btn-primary"
+                        id="word-list-submit-button"
+                      >submit</button>
                     </div>
 
                     <div class="col-md-9 col-sm-12">
@@ -77,10 +93,20 @@
                       <br>
                       <h5><strong>Request URL</strong></h5>
                       <div class="input-group">
-                        <div class="input-group-addon"><strong>GET</strong></div>
-                        <input type="text" class="form-control" id="word-list-get-string" readonly="readonly">
+                        <div class="input-group-addon">
+                          <strong>GET</strong>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="word-list-get-string"
+                          readonly="readonly"
+                        >
                       </div>
-                      <pre class="api-response-output-lg" id="word-list-response-output">loading...</pre>
+                      <pre
+                        class="api-response-output-lg"
+                        id="word-list-response-output"
+                      >loading...</pre>
                     </div>
 
                   </div>
@@ -94,7 +120,9 @@
             <tr>
               <td>
 
-                <p class="api-header text-muted pointer"><strong>Random Word List</strong></p>
+                <p class="api-header text-muted pointer">
+                  <strong>Random Word List</strong>
+                </p>
 
                 <div class="api-body">
 
@@ -115,14 +143,25 @@
                       <h5><strong>Response Verbose</strong></h5>
                       <div class="verbose-radio radio">
                         <label class="radio-inline">
-                          <input class="verbose-true" type="radio" name="random-list-radio"> true
+                          <input
+                            class="verbose-true"
+                            type="radio"
+                            name="random-list-radio"
+                          > true
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="random-list-radio" checked> false
+                          <input
+                            type="radio"
+                            name="random-list-radio"
+                            checked
+                          > false
                         </label>
                       </div>
                       <br>
-                      <button class="btn btn-primary" id="random-list-submit-button">submit</button>
+                      <button
+                        class="btn btn-primary"
+                        id="random-list-submit-button"
+                      >submit</button>
                     </div>
 
                     <div class="col-md-9 col-sm-12">
@@ -130,10 +169,20 @@
                       <br>
                       <h5><strong>Request URL</strong></h5>
                       <div class="input-group">
-                        <div class="input-group-addon"><strong>GET</strong></div>
-                        <input type="text" class="form-control" id="random-list-get-string" readonly="readonly">
+                        <div class="input-group-addon">
+                          <strong>GET</strong>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="random-list-get-string"
+                          readonly="readonly"
+                        >
                       </div>
-                      <pre class="api-response-output-lg" id="random-list-response-output">loading...</pre>
+                      <pre
+                        class="api-response-output-lg"
+                        id="random-list-response-output"
+                      >loading...</pre>
                     </div>
 
                   </div>
@@ -147,7 +196,9 @@
             <tr>
               <td>
 
-                <p class="api-header text-muted pointer"><strong>Get Rank</strong></p>
+                <p class="api-header text-muted pointer">
+                  <strong>Get Rank</strong>
+                </p>
 
                 <div class="api-body">
 
@@ -162,14 +213,25 @@
                       <h5><strong>Response Verbose</strong></h5>
                       <div class="verbose-radio radio">
                         <label class="radio-inline">
-                          <input class="verbose-true" type="radio" name="word-rank-radio"> true
+                          <input
+                            class="verbose-true"
+                            type="radio"
+                            name="word-rank-radio"
+                          > true
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="word-rank-radio" checked> false
+                          <input
+                            type="radio"
+                            name="word-rank-radio"
+                            checked
+                          > false
                         </label>
                       </div>
                       <br>
-                      <button class="btn btn-primary" id="word-rank-submit-button">submit</button>
+                      <button
+                        class="btn btn-primary"
+                        id="word-rank-submit-button"
+                      >submit</button>
                     </div>
 
                     <div class="col-md-9 col-sm-12">
@@ -177,10 +239,20 @@
                       <br>
                       <h5><strong>Request URL</strong></h5>
                       <div class="input-group">
-                        <div class="input-group-addon"><strong>GET</strong></div>
-                        <input type="text" class="form-control" id="word-rank-get-string" readonly="readonly">
+                        <div class="input-group-addon">
+                          <strong>GET</strong>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="word-rank-get-string"
+                          readonly="readonly"
+                        >
                       </div>
-                      <pre class="api-response-output-sm" id="word-rank-response-output">loading...</pre>
+                      <pre
+                        class="api-response-output-sm"
+                        id="word-rank-response-output"
+                      >loading...</pre>
                     </div>
 
                   </div>
@@ -194,7 +266,9 @@
             <tr>
               <td>
 
-                <p class="api-header text-muted pointer"><strong>Search by Rank</strong></p>
+                <p class="api-header text-muted pointer">
+                  <strong>Search by Rank</strong>
+                </p>
 
                 <div class="api-body">
 
@@ -209,14 +283,25 @@
                       <h5><strong>Response Verbose</strong></h5>
                       <div class="verbose-radio radio">
                         <label class="radio-inline">
-                          <input class="verbose-true" type="radio" name="search-rank-radio"> true
+                          <input
+                            class="verbose-true"
+                            type="radio"
+                            name="search-rank-radio"
+                          > true
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="search-rank-radio" checked> false
+                          <input
+                            type="radio"
+                            name="search-rank-radio"
+                            checked
+                          > false
                         </label>
                       </div>
                       <br>
-                      <button class="btn btn-primary" id="search-rank-submit-button">submit</button>
+                      <button
+                        class="btn btn-primary"
+                        id="search-rank-submit-button"
+                      >submit</button>
                     </div>
 
                     <div class="col-md-9 col-sm-12">
@@ -224,10 +309,20 @@
                       <br>
                       <h5><strong>Request URL</strong></h5>
                       <div class="input-group">
-                        <div class="input-group-addon"><strong>GET</strong></div>
-                        <input type="text" class="form-control" id="search-rank-get-string" readonly="readonly">
+                        <div class="input-group-addon">
+                          <strong>GET</strong>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="search-rank-get-string"
+                          readonly="readonly"
+                        >
                       </div>
-                      <pre class="api-response-output-sm" id="search-rank-response-output">loading...</pre>
+                      <pre
+                        class="api-response-output-sm"
+                        id="search-rank-response-output"
+                      >loading...</pre>
                     </div>
 
                   </div>
@@ -247,8 +342,18 @@
     <!-- footer -->
     <footer class="footer-container footer navbar-fixed-bottom">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-          <p class="footer-text text-muted">View on <a target="blank" href="https://github.com/hsadler/Popular-Words-API">Github</a></p>
+        <div
+          class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10
+          col-xs-offset-1"
+        >
+          <p class="footer-text text-muted">
+            <span>
+              View on <a
+                target="blank"
+                href="https://github.com/hsadler/Popular-Words-API"
+              >Github</a>
+            </span>
+          </p>
         </div>
       </div>
     </footer>
